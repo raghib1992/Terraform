@@ -1,7 +1,7 @@
 resource "aws_instance" "test_remote_provisioner" {
     ami = "ami-0470e33cd681b2476"
     instance_type = "t2.micro"
-    key_name = "mykey"
+    key_name = "raghiba"
     tags = {
         Name = "test_remote_provisioner"
     }
@@ -9,20 +9,20 @@ resource "aws_instance" "test_remote_provisioner" {
 }
 
 resource "aws_eip" "firsteip" {
-    instance = "${aws_instance.test_remote_provisioner.id}" 
+    instance = aws_instance.test_remote_provisioner.id 
 }
 
 output "firsteip" {
-  value = "${aws_eip.firsteip.public_ip}"
+  value = aws_eip.firsteip.public_ip
 }
 
 resource "null_resource" "ec2_ssh_connection" {
     connection {
-        host = "${aws_eip.firsteip.public_ip}"
+        host = aws_eip.firsteip.public_ip
         type = "ssh"
         port = 22
         user = "ec2-user"
-        private_key = "${file("mykey.pem")}"
+        private_key = file("mykey.pem")
         timeout = "1m"
         agent = false
     }
