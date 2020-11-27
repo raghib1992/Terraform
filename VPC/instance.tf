@@ -37,7 +37,7 @@ resource "aws_key_pair" "mykey" {
 }
 
 resource "aws_instance" "example" {
-    ami = "ami-01996625fff6b8fcc"
+    ami = "ami-0885b1f6bd170450c"
     instance_type = "t2.micro"
     key_name = aws_key_pair.mykey.key_name
     subnet_id = aws_subnet.public_1a.id
