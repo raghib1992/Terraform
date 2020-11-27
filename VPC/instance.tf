@@ -10,6 +10,14 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
+  ingress {
+    description = "web from VPC"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port   = 0
@@ -23,15 +31,15 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 
-resource "aws_key_pair" "secure_key" {
-    key_name = "secure_key"
-    public_key = "$file(var.PUBLIC_KEY)"
+resource "aws_key_pair" "mykey" {
+    key_name = "mykey"
+    public_key = "${file(var.PUBLIC_KEY)}"
 }
 
 resource "aws_instance" "example" {
     ami = "ami-01996625fff6b8fcc"
     instance_type = "t2.micro"
-    key_name = aws_key_pair.secure_key.key_name
+    key_name = aws_key_pair.mykey.key_name
     subnet_id = aws_subnet.public_1a.id
     vpc_security_group_ids = [ aws_security_group.allow_ssh.id ]
     tags = {

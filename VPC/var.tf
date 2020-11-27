@@ -2,5 +2,5 @@ variable "AWS_REGION" {}
 variable "AWS_ACCESS_KEY" {}
 variable "AWS_SECRET_KEY" {}
 variable "PUBLIC_KEY" {
-    default = "secure_key.pub" 
+    default = "mykey.pub" 
 }
