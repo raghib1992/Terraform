@@ -23,7 +23,7 @@ resource "aws_ebs_volume" "volume-1" {
 }
 
 resource "aws_volume_attachment" "vol_att" {
-  device_name = "/dev/volume-1"
+  device_name = "/dev/sdb"
   volume_id   = aws_ebs_volume.volume-1.id
   instance_id = aws_instance.test_ebs.id
 }
