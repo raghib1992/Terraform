@@ -1,3 +1,5 @@
 terraform.tf*
 .terraform
 ssh_key*
+mykey
+mykey.*
