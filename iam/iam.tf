@@ -22,7 +22,7 @@ resource "aws_iam_group_membership" "developers-users" {
         aws_iam_user.dev1.name,
         aws_iam_user.dev2.name
     ]
-    group = "aws_iam_group.developers.name"  
+    group = aws_iam_group.developers.name  
 }
 
 output "warning" {
