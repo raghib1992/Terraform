@@ -1,20 +1,22 @@
+  
 resource "aws_iam_role" "s3-access" {
-    name = "s3-access"
-    assume_role_policy = <<EOF
+  name               = "s3-access"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
     {
-        "version": "2012-10-17",
-        "statement": [
-            {
-                "Action": "sts:AssumeRole",
-                "Principal": {
-                    "Service": "ec2.amazon.com"
-                },
-                "Effect": "Allow",
-                "Sid": ""
-            }
-        ]
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
     }
-    EOF  
+  ]
+}
+EOF
+
 }
 
 resource "aws_iam_instance_profile" "s3-access-instance-profile" {
