@@ -1,8 +1,6 @@
-variable "AWS_REGION" { default = "ap-south-1"}
-
 module "main-vpc" {
   source = "../Modules/vpc"
-  ENV    = "${var.AWS_REGION}"
+  ENV    = "ap-south-1"
 }
 
 module "instance" {
