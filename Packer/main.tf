@@ -1,12 +1,13 @@
-module "main-vpc" {
-  source = "../Modules/vpc"
-  ENV    = "dev"
-  AWS_REGION = "ap-south-1"
-}
+resource "aws_instance" "example" {
+  ami           = var.AMI_ID
+  instance_type = "t2.micro"
 
-module "instance" {
-  source         = "../Modules/instance"
-  ENV            = "dev"
-  VPC_ID         = module.main-vpc.vpc_id
-  PUBLIC_SUBNETS = module.main-vpc.public_subnets  
+  # the VPC subnet
+  subnet_id = aws_subnet.main-public-1.id
+
+  # the security group
+  vpc_security_group_ids = [aws_security_group.example-instance.id]
+
+  # the public SSH key
+  key_name = aws_key_pair.mykeypair.key_name
 }
