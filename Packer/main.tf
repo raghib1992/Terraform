@@ -1,6 +1,7 @@
 module "main-vpc" {
   source = "../Modules/vpc"
-  ENV    = "ap-south-1"
+  ENV    = "dev"
+  AWS_REGION = "ap-south-1"
 }
 
 module "instance" {
