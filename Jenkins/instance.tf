@@ -1,3 +1,10 @@
+provider "aws" {
+  region = var.AWS_REGION
+  access_key = var.AWS_ACCESS_KEY
+  secret_key = var.AWS_SECRET_KEY
+}
+
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -63,4 +70,24 @@ resource "aws_instance" "app-instance" {
 
   # the public SSH key
   key_name = aws_key_pair.mykeypair.key_name
+}
+
+resource "aws_key_pair" "mykeypair" {
+  key_name   = "mykeypair"
+  public_key = fileexists(var.PATH_TO_PUBLIC_KEY) ? file(var.PATH_TO_PUBLIC_KEY) : var.DUMMY_SSH_PUB_KEY
+  lifecycle {
+    ignore_changes = [public_key]
+  }
+}
+
+output "jenkins-ip" {
+  value = [aws_instance.jenkins-instance.*.public_ip]
+}
+
+output "app-ip" {
+  value = [aws_instance.app-instance.*.public_ip]
+}
+
+output "s3-bucket" {
+  value = aws_s3_bucket.terraform-state.bucket
 }
