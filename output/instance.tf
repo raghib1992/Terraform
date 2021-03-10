@@ -10,6 +10,9 @@ resource "aws_instance" "example" {
     tags = {
         Name = "terraform"
     }
+    provisioner "local-exec" {
+        command = "echo ${aws_instance.example.private_ip}" > /tmp/pri_ip.txt
+    }
 }
 
 output "public_ip" {

@@ -5,5 +5,12 @@ variable "AWS_ACCESS_KEY" {}
 variable "AWS_SECRET_KEY" {}
 
 variable "PUBLIC_KEY" {
-    default = "mykey.pub"  
+    default = "test-key.pub"  
+}
+
+variable "AMIS" {
+    type = map(string)
+    default = {
+        ap-south-1 = "ami-0e4babcd116a05bfc"
+    }
 }

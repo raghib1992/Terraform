@@ -3,3 +3,4 @@ terraform.tf*
 ssh_key*
 mykey
 mykey.*
+test-key*
