@@ -3,8 +3,8 @@ data "aws_ip_ranges" "ip_range" {
   services = ["ec2"]
 }
 
-resource "aws_security_group" "secure_world" {
-  name = "secure_duniya"
+resource "aws_security_group" "terra" {
+  name = "terra"
   ingress {
     from_port   = "443"
     to_port     = "443"

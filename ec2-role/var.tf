@@ -8,6 +8,10 @@ variable "PUBLIC_KEY" {
     default = "test-key.pub"  
 }
 
+variable "PRIVATE_KEY" {
+    default = "test-key.pem"  
+}
+
 variable "AMIS" {
     type = map(string)
     default = {
