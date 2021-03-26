@@ -15,6 +15,6 @@ variable "PRIVATE_KEY" {
 variable "AMIS" {
     type = map(string)
     default = {
-        ap-south-1 = "ami-0e4babcd116a05bfc"
+        ap-south-1 = "ami-0d758c1134823146a"
     }
 }
