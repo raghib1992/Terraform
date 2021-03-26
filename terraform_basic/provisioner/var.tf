@@ -7,11 +7,11 @@ variable "AWS_ACCESS_KEY" {}
 variable "AWS_SECRET_KEY" {}
 
 variable "PUBLIC_KEY" {
-    default = "mykey.pub"
+    default = "test-key.pub"
 }
 
 variable "PRIVATE_KEY" {
-    default = "mykey"
+    default = "test-key"
 }
 
 variable "USERNAME" {
