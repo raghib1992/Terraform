@@ -9,9 +9,9 @@ variable "AMIS" {
 }
 
 variable "PUBLIC_KEY" {
-    default = "ssh_key.pub"  
+    default = "mykey.pub"  
 }
 
 variable "PRIVATE_KEY" {
-    default = "ssh_key"
+    default = "mykey"
 }
